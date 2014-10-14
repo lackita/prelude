@@ -5,7 +5,7 @@
 (require 'prelude-ido) ;; Super charges Emacs completion for C-x C-f and more
 (require 'prelude-helm)
 (require 'prelude-helm-everywhere)
-(require 'prelude-company)
+;(require 'prelude-company)
 (require 'prelude-key-chord) ;; Binds useful features to key combinations
 (require 'prelude-mediawiki)
 
