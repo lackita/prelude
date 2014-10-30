@@ -36,10 +36,14 @@
 
 (fset 'projectile-save-and-run-tests
       [?\s-p ?S ?\s-p ?P])
-(global-set-key [f6] (lambda []
-		       (interactive)
-		       (let ((compilation-read-command nil))
-			 (projectile-save-and-run-tests))))
+
+(defun projectile-save-and-run-tests-automatically (arg)
+  (interactive "P")
+  (let ((compilation-read-command nil))
+	(projectile-save-project-buffers)
+	(projectile-test-project arg)))
+
+(global-set-key [f6] 'projectile-save-and-run-tests-automatically)
 
 
 (global-set-key (kbd "C-x C-r") (lambda ()
