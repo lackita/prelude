@@ -20,11 +20,13 @@
  '(cperl-use-syntax-table-text-property-for-tags t)
  '(indent-tabs-mode t)
  '(kill-whole-line t)
+ '(org-startup-truncated nil)
  '(sql-mysql-options (quote ("-A")))
  '(tab-stop-list
    (quote
 	(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96)))
  '(tab-width 4)
+ '(web-mode-markup-indent-offset 2)
  '(web-mode-tag-auto-close-style 1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -65,6 +67,10 @@
 (require 'smartparens)
 (require 'clojure-mode)
 (define-key clojure-mode-map (kbd "M-)") 'sp-unwrap-sexp)
+
+;; Ruby customizations
+(require 'ruby-refactor)
+(add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
 
 (provide 'custom)
 ;;; custom.el ends here
