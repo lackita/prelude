@@ -18,6 +18,9 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-use-syntax-table-text-property t)
  '(cperl-use-syntax-table-text-property-for-tags t)
+ '(exec-path
+   (quote
+	("/usr/local/bin" "/usr/bin" "/bin" "/usr/lib64/emacs/emacs/24.5/x86_64-solus-linux" "/home/lackita/.rvm/gems/ruby-2.3.0/bin")))
  '(indent-tabs-mode t)
  '(kill-whole-line t)
  '(org-startup-truncated nil)
