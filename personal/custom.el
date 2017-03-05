@@ -24,6 +24,10 @@
  '(indent-tabs-mode t)
  '(kill-whole-line t)
  '(org-startup-truncated nil)
+ '(package-selected-packages
+   (quote
+	(arduino-mode docker csv-mode restclient zop-to-char zenburn-theme yari yaml-mode which-key web-mode volatile-highlights undo-tree smex smartrep smartparens smart-mode-line slime scss-mode rust-mode ruby-tools ruby-refactor rubocop rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text mediawiki markdown-mode magit key-chord json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode groovy-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region erlang ensime elisp-slime-nav easy-kill dockerfile-mode discover-my-major diminish diff-hl csharp-mode crux company-auctex coffee-mode cider cdlatex browse-kill-ring beacon anzu anaconda-mode ace-window)))
+ '(projectile-rails-vanilla-command "docker-compose run web rails")
  '(sql-mysql-options (quote ("-A")))
  '(tab-stop-list
    (quote
@@ -74,6 +78,17 @@
 ;; Ruby customizations
 (require 'ruby-refactor)
 (add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
+(projectile-rails-global-mode)
+
+(setq original-command 'rake--choose-command-prefix)
+(defun rake--choose-command-prefix (root)
+  (concat "docker-compose run web " (original-command root)))
+
+;; Compilation notification
+(require 'notifications)
+(defun notify-compile-result (buffer msg)
+  (notifications-notify :body msg))
+(add-to-list 'compilation-finish-functions 'notify-compile-result)
 
 (provide 'custom)
 ;;; custom.el ends here
