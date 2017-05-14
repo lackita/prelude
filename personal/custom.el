@@ -20,13 +20,30 @@
  '(cperl-use-syntax-table-text-property-for-tags t)
  '(exec-path
    (quote
-	("/usr/local/bin" "/usr/bin" "/bin" "/usr/lib64/emacs/emacs/24.5/x86_64-solus-linux" "/home/lackita/.rvm/gems/ruby-2.3.0/bin")))
+	("/usr/local/bin" "/usr/bin" "/bin" "/usr/lib64/emacs/emacs/24.5/x86_64-solus-linux" "/home/lackita/.rvm/gems/ruby-2.3.0/bin" "/home/lackita/bin")))
  '(indent-tabs-mode t)
  '(kill-whole-line t)
+ '(org-agenda-custom-commands
+   (quote
+	(("n" "Agenda and all TODOs"
+	  ((agenda "" nil)
+	   (alltodo "" nil))
+	  nil)
+	 ("u" "Unscheduled"
+	  ((todo ""
+			 ((org-agenda-skip-function
+			   (org-agenda-skip-entry-if
+				(quote scheduled))))))))))
+ '(org-agenda-files (quote ("~/Dropbox/org/")))
+ '(org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+ '(org-agenda-todo-ignore-scheduled (quote all))
+ '(org-directory "~/Dropbox/org")
+ '(org-mobile-directory "~/Dropbox/MobileOrg")
+ '(org-mobile-inbox-for-pull "~/Dropbox/MobileOrg/from-mobile.org")
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-	(arduino-mode docker csv-mode restclient zop-to-char zenburn-theme yari yaml-mode which-key web-mode volatile-highlights undo-tree smex smartrep smartparens smart-mode-line slime scss-mode rust-mode ruby-tools ruby-refactor rubocop rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text mediawiki markdown-mode magit key-chord json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode groovy-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region erlang ensime elisp-slime-nav easy-kill dockerfile-mode discover-my-major diminish diff-hl csharp-mode crux company-auctex coffee-mode cider cdlatex browse-kill-ring beacon anzu anaconda-mode ace-window)))
+	(furl request "org" arduino-mode docker csv-mode restclient zop-to-char zenburn-theme yari yaml-mode which-key web-mode volatile-highlights undo-tree smex smartrep smartparens smart-mode-line slime scss-mode rust-mode ruby-tools ruby-refactor rubocop rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text mediawiki markdown-mode magit key-chord json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode groovy-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region erlang ensime elisp-slime-nav easy-kill dockerfile-mode discover-my-major diminish diff-hl csharp-mode crux company-auctex coffee-mode cider cdlatex browse-kill-ring beacon anzu anaconda-mode ace-window)))
  '(projectile-rails-vanilla-command "docker-compose run web rails")
  '(sql-mysql-options (quote ("-A")))
  '(tab-stop-list
@@ -83,6 +100,8 @@
 (setq original-command 'rake--choose-command-prefix)
 (defun rake--choose-command-prefix (root)
   (concat "docker-compose run web " (original-command root)))
+
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; Compilation notification
 (require 'notifications)
